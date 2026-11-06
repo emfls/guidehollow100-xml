@@ -1,0 +1,15 @@
+{
+  "name": "guidehollow100-xml",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "astro": "5.18.2",
+    "@astrojs/sitemap": "3.7.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/verify-utilities.mjs",
+    "test": "node --test src/utility/*.test.mjs",
+    "preview": "astro preview"
+  }
+}

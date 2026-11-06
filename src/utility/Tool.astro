@@ -1,0 +1,29 @@
+---
+import './tool.css';
+const {tool}=Astro.props;
+---
+<section class="wrap utility" data-utility={tool.slug}>
+<h1>{tool.title}</h1><p class="utility-intro">{tool.description}</p>
+<p class="utility-private">입력한 내용은 내 기기에서만 처리됩니다.</p>
+<noscript><p>이 도구는 자바스크립트를 켜야 사용할 수 있습니다.</p></noscript>
+<p id="utility-error" role="alert" tabindex="-1" hidden></p>
+<form id="utility-form" novalidate>
+{tool.fields.map(f=><div class="utility-field">
+<label for={'field-'+f.name}>{f.label}{!f.required&&<small> (선택)</small>}</label>
+{f.type==='textarea'?<textarea id={'field-'+f.name} name={f.name} rows="5" maxlength="200000" required={f.required} value={f.value??''}/>:
+f.type==='select'?<select id={'field-'+f.name} name={f.name} required={f.required}>{f.options.map(o=><option value={o.value} selected={o.value===f.value}>{o.label}</option>)}</select>:
+<input id={'field-'+f.name} name={f.name} type={f.type} required={f.required} min={f.min} max={f.max} step={f.step??'any'} accept={f.accept} multiple={f.multiple} value={f.type==='file'?undefined:f.value??''} maxlength={f.type==='text'?200000:undefined}/>}
+{f.hint&&<p class="utility-hint">{f.hint}</p>}
+</div>)}
+<button id="utility-submit" type="submit" disabled>결과 보기</button>
+</form>
+<section id="utility-result" tabindex="-1" aria-labelledby="utility-result-title" hidden><h2 id="utility-result-title">결과</h2><p id="utility-output"></p><img id="utility-image" alt="만든 결과 미리보기" hidden/><iframe id="utility-html" title="만든 문서 미리보기" sandbox="" referrerpolicy="no-referrer" hidden></iframe><a id="utility-download" download hidden>결과 저장</a></section>
+<details class="utility-help"><summary>도움말 · 입력 내용 지우기</summary>
+<p>입력값을 바꾸면 이전 결과가 사라집니다. 결과는 원본과 함께 확인하세요.</p>
+<button id="utility-reset" type="button">입력 내용 지우기</button>
+<p><a href="/guides/">관련 가이드</a> · <a href="/privacy/">개인정보 안내</a></p></details>
+</section>
+<script>
+import {mount} from './ui.mjs';
+mount();
+</script>

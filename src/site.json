@@ -1,0 +1,14 @@
+{
+  "title": "GuideHollow",
+  "slug": "xml",
+  "section": "XML 오류 찾기·정리",
+  "hero": "XML 오류 찾기·정리",
+  "description": "브라우저 XML 파서로 검사합니다. DTD·외부 엔티티·스타일시트 지시문은 허용하지 않습니다. 혼합 본문과 xml:space는 보존합니다.",
+  "pageTitle": "XML 오류 찾기·정리 | GuideHollow",
+  "url": "https://xml.guidehollow.com/",
+  "accent": "#17684f",
+  "launchReady": true,
+  "adsReady": false,
+  "coupangEnabled": true,
+  "utilityEnabled": true
+}

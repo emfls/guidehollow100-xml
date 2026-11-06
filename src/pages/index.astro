@@ -1,0 +1,5 @@
+---
+import Layout from '../layouts/Layout.astro';import CoupangBanner from '../components/CoupangBanner.astro';import Tool from '../utility/Tool.astro';import {tools} from '../utility/catalog.mjs';import site from '../site.json';
+const tool=tools.find(t=>t.slug===site.slug);
+---
+<Layout coupangInPage={true}><Tool tool={tool}/><CoupangBanner placement="home"/></Layout>

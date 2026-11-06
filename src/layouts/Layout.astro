@@ -1,0 +1,9 @@
+---
+import site from '../site.json';
+import CoupangBanner from '../components/CoupangBanner.astro';
+import '../styles/main.css';
+const {title=site.pageTitle,description=site.description,coupangInPage=false,robots=Astro.url.pathname==='/'?'index,follow':'noindex,follow'}=Astro.props;
+const canonical=new URL(Astro.url.pathname,site.url).href;
+---
+<!doctype html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{title}</title><meta name="description" content={description}/><meta name="robots" content={robots}/><link rel="canonical" href={canonical}/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><meta property="og:locale" content="ko_KR"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/></head>
+<body style={'--accent:'+site.accent}><a class="skip" href="#main">본문으로 이동</a><header class="top"><div class="wrap bar"><a class="brand" href="/"><span class="mark">G</span>GuideHollow</a><nav aria-label="주요 메뉴"><a href="/">도구</a><a href="/guides/">사용 안내</a></nav></div></header><main id="main"><slot/></main>{!coupangInPage&&<CoupangBanner placement="article"/>}<footer class="foot"><div class="wrap"><strong>GuideHollow</strong><p>바로 사용할 수 있는 무료 한국어 도구</p><nav><a href="/about/">소개</a><a href="/privacy/">개인정보 안내</a><a href="/disclosure/">광고 안내</a><a href="/editorial/">운영 원칙</a></nav><small>© {new Date().getFullYear()} GuideHollow</small></div></footer></body></html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xml.guidehollow.com/sitemap-index.xml

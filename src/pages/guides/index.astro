@@ -1,0 +1,4 @@
+---
+import Layout from '../../layouts/Layout.astro';import site from '../../site.json';import {tools} from '../../utility/catalog.mjs';const tool=tools.find(t=>t.slug===site.slug);
+---
+<Layout title={'사용 안내 | '+tool.title}><section class="wrap content"><h1>{tool.title} 사용 안내</h1><p>{tool.description}</p><ol><li>도구 화면에서 입력값이나 파일을 선택하세요.</li><li>결과 보기를 누르세요.</li><li>필요하면 결과 저장으로 내려받으세요.</li></ol><h2>입력 항목</h2><ul>{tool.fields.map(f=><li>{f.label}{f.hint?' — '+f.hint:''}</li>)}</ul><p>입력은 내 기기에서 처리됩니다. 오류가 나오면 입력값과 지원 형식을 확인하세요.</p><a href="/">도구 열기</a></section></Layout>
